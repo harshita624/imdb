@@ -1,25 +1,24 @@
 name: imdb_search_app
 description: A new Flutter project
 
-publish_to: "none" # Remove this line if you plan to publish the app
+publish_to: "none"  # Remove this line if you plan to publish the app
 
 version: 1.0.0+1
 
 environment:
   sdk: ">=2.19.0 <3.0.0"
-  
+
 dependencies:
+  logger: ^1.4.0
   flutter:
     sdk: flutter
   http: ^0.13.6
   provider: ^6.0.5
-  google_fonts: ^3.0.1
-  flutter_dotenv: ^5.0.2  # Add this line to use dotenv
-
+  google_fonts: ^3.0.1  # Add google_fonts only here
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_lints: ^2.0.0
-
   flutter_test:
     sdk: flutter
 
@@ -27,3 +26,5 @@ flutter:
   uses-material-design: true
   assets:
     - .env
+
+  

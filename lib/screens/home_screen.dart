@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                 : searchProvider.errorMessage.isNotEmpty
                     ? Text(
                         searchProvider.errorMessage,
-                        style: TextStyle(color: Colors.red, fontSize: 16),
+                        style: const TextStyle(color: Colors.red, fontSize: 16),
                       )
                     : searchProvider.results.isEmpty
                         ? const Text(
@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                               itemCount: searchProvider.results.length,
                               itemBuilder: (context, index) {
                                 final movie = searchProvider.results[index];
-                                return MovieCard(movie: movie);
+                                return MovieCard(movie: movie); // Remove `const` here
                               },
                             ),
                           ),
@@ -81,6 +81,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 class MovieCard extends StatelessWidget {
   final dynamic movie;
   const MovieCard({Key? key, required this.movie}) : super(key: key);

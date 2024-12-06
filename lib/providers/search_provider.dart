@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
 
 class SearchProvider extends ChangeNotifier {
   List<dynamic> _results = [];
@@ -11,6 +12,9 @@ class SearchProvider extends ChangeNotifier {
   List<dynamic> get results => _results;
   bool get isLoading => _isLoading;
   String get errorMessage => _errorMessage;
+
+  // Create a logger instance
+  final Logger _logger = Logger();
 
   // Function to search movies
   Future<void> searchMovies(String query) async {
@@ -38,7 +42,10 @@ class SearchProvider extends ChangeNotifier {
       }
     } catch (e) {
       _errorMessage = 'An error occurred. Please check your internet connection.';
-      print('Error: $e');
+      
+      // Use logger to log the error
+      _logger.e('Error occurred while fetching movies:', e);
+
       _results = [];
     } finally {
       _isLoading = false;
